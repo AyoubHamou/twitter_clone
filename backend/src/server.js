@@ -5,6 +5,7 @@ import {clerkMiddleware} from "@clerk/express"
 import ENV from "./config/env.js";
 import { connectDb } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js"
+import postRoutes from "./routes/postRoutes.js"
 const app = express();
 
 app.use(cors())
@@ -18,6 +19,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes)
+app.use("/api/posts", postRoutes)
+
 
 app.listen(ENV.PORT, () => {
   console.log(`listening on port ${ENV.PORT}`);
