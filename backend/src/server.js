@@ -26,6 +26,11 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/notifications", notificationRoutes);
 
-app.listen(ENV.PORT, () => {
-  console.log(`listening on port ${ENV.PORT}`);
-});
+if (ENV.NODE_ENV !== "production") {
+  app.listen(ENV.PORT, () => {
+    console.log(`listening on port ${ENV.PORT}`);
+  });
+}
+
+// for vercel
+export default app;
